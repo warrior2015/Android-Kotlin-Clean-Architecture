@@ -1,48 +1,44 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion Versions.compileSdk
+    compileSdkVersion DefaultConfig.compileSdk
     defaultConfig {
-        applicationId ApplicationId.id
-        minSdkVersion Versions.minSdk
-        targetSdkVersion Versions.targetSdk
+        applicationId App.petproject
+        minSdkVersion DefaultConfig.minSdk
+        targetSdkVersion DefaultConfig.targetSdk
         versionCode Releases.versionCode
         versionName Releases.versionName
-        multiDexEnabled true
     }
 
     buildTypes {
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    testOptions {
-        unitTests.returnDefaultValues = true
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
-    dynamicFeatures = [Modules.posts, Modules.login, Modules.home]
 }
 
 dependencies {
+    implementation project(Modules.resources)
+
+    implementation project(Modules.views)
     implementation project(Modules.cache)
     implementation project(Modules.navigation)
+    implementation project(Modules.usermanager)
 
-    implementation Libraries.kotlin
-    implementation FirebaseLibraries.core
-    implementation SupportLibraries.design
-    implementation SupportLibraries.appcompat
-    implementation Libraries.crashlytics
+    implementation project(Modules.onboarding)
+    implementation project(Modules.home)
+    implementation project(Modules.profile)
 
-    implementation Libraries.lifecycleExtensions
-    implementation Libraries.koinViewModel
+    implementation Deps.kotlin
+    implementation Deps.timber
 
-    debugImplementation Libraries.leakCanaryAndroid
-    releaseImplementation Libraries.leakCanaryAndroidNoOp
-    debugImplementation Libraries.leakCanaryAndroidSupportFragment
+    implementation Deps.mvrx
+
+    debugImplementation Deps.leakCanaryAndroid
 }
-
-apply plugin: 'com.google.gms.google-services'

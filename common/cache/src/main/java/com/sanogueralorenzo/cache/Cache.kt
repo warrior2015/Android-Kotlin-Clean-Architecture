@@ -1,26 +1,22 @@
 package com.sanogueralorenzo.cache
 
-import android.content.Context
-
 import com.pacoworks.rxpaper2.RxPaperBook
+import io.paperdb.Paper
+import io.reactivex.Completable
 import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers.io
 
-/**
- * Paper is a fast NoSQL-like storage for Java/Kotlin objects on Android with automatic schema migration support.
- * See: https://github.com/pakoito/RxPaper2
- */
+class Cache {
 
-object CacheLibrary {
-    fun init(context: Context) = RxPaperBook.init(context)
-}
+    fun <T> load(key: String): Single<T> = RxPaperBook.with().read(key)
 
-class Cache<T> {
+    fun <T> save(key: String, data: T): Single<T> =
+        RxPaperBook.with().write(key, data).toSingleDefault(data)
 
-    private val book: RxPaperBook = RxPaperBook.with(io())
+    fun delete(key: String): Completable = RxPaperBook.with().delete(key)
 
-    fun load(key: String): Single<T> = book.read(key)
+    fun <T> get(key: String): T? = Paper.book().read(key)
 
-    fun save(key: String, anyObject: T): Single<T> =
-        book.write(key, anyObject).toSingleDefault(anyObject)
+    fun <T> set(key: String, data: T) = Paper.book().write(key, data).let { Unit }
+
+    fun remove(key: String) = Paper.book().delete(key)
 }

@@ -1,8 +1,8 @@
 Android Kotlin Clean Architecture App
 =
 
-[![CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master.svg?style=svg)](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master)
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.11-blue.svg)](http://kotlinlang.org/)
+[![Actions Status](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/workflows/android/badge.svg)](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/actions)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.71-blue.svg)](http://kotlinlang.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 Personal project to try out things:
@@ -19,7 +19,7 @@ Personal project to try out things:
 - [ktlint (Kotlin Style Guide Static Code Analysis Tool)](https://github.com/shyiko/ktlint) [Kotlin Style Guide](https://android.github.io/kotlin-guides/style.html)
 - [gradle versions plugin (Dependencies Updates)](https://github.com/ben-manes/gradle-versions-plugin)
 
-[Sample Posts Feature Module (Post List and Post Detail screen with comments)](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/posts)
+[Sample Giphy Project (Paginated Gifs with trending and search results)](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/sample)
 
 Discussions
 -
@@ -59,10 +59,10 @@ Articles
 License
 -
 
-    Copyright 2018 Mario Sanoguera de Lorenzo
+    Copyright 2020 Mario Sanoguera de Lorenzo
 
     Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
+    you may not use this project except in compliance with the License.
     You may obtain a copy of the License at
 
        http://www.apache.org/licenses/LICENSE-2.0

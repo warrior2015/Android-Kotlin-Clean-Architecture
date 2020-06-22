@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Giphy</string>
+    <string name="retry">Retry</string>
+    <string name="search">Search</string>
+    <string name="favorites">Favorites</string>
+    <string name="trending">Trending</string>
+    <string name="funny">Funny</string>
+    <string name="sad">Sad</string>
+    <string name="dog">Favorites</string>
+    <string name="love">Love</string>
+    <string name="cat">Cat</string>
+</resources>

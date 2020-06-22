@@ -1,12 +1,9 @@
 package com.sanogueralorenzo.navigation.features
 
 import android.content.Intent
-import com.sanogueralorenzo.navigation.loadIntentOrNull
+import com.sanogueralorenzo.navigation.core.Navigator
 
-object HomeNavigation : DynamicFeature<Intent> {
-
-    private const val HOME = "com.sanogueralorenzo.home.HomeActivity"
-
-    override val dynamicStart: Intent?
-        get() = HOME.loadIntentOrNull()
+object HomeNavigation : Navigator() {
+    fun home() = fragmentIntent("com.sanogueralorenzo.home.HomeFragment")
+        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 }

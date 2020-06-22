@@ -1,43 +1,20 @@
 package com.sanogueralorenzo.namingishard
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sanogueralorenzo.navigation.features.HomeNavigation
-import com.sanogueralorenzo.navigation.features.LoginNavigation
-import com.sanogueralorenzo.navigation.features.PostsNavigation
+import com.sanogueralorenzo.navigation.features.OnboardingNavigation
+import com.sanogueralorenzo.usermanager.UserManager
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(0, 0)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        startLogin()
-    }
-
-    private fun startLogin() = LoginNavigation.dynamicStart?.let {
-        startActivityForResult(it, LOGIN)
-    }
-
-    private fun startHome() = HomeNavigation.dynamicStart?.let {
-        startActivity(it)
-    }
-
-    private fun startPosts() = PostsNavigation.dynamicStart?.let {
-        startActivity(it)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
         when {
-            requestCode == LOGIN && resultCode == Activity.RESULT_OK -> startHome()
-            else -> startPosts()
+            UserManager().newUser -> startActivity(OnboardingNavigation.intro())
+            else -> startActivity(HomeNavigation.home())
         }
         finish()
-    }
-
-    companion object {
-        private const val LOGIN = 100
     }
 }
